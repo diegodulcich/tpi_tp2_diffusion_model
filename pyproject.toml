@@ -1,0 +1,24 @@
+[project]
+name = "restauracion-fotografica-educativa"
+version = "0.1.0"
+description = "MVP educativo para reparar fotos con inpainting por difusión y analizar los cambios."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "accelerate>=1.1,<2",
+    "diffusers>=0.34,<1",
+    "numpy>=1.26,<3",
+    "pillow>=10,<13",
+    "gradio>=5,<6",
+    "torch>=2.4,<3",
+    "transformers>=4.45,<5",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8,<9",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
