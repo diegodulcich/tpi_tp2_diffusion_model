@@ -216,7 +216,7 @@ autónomo:
 | Modo básico | Se aplica un filtro mediano 5 × 5 en la zona marcada; suaviza, pero no recupera información perdida. |
 | Zona generada por difusión | Es una propuesta del modelo condicionada por imagen, máscara e instrucción. Puede ser plausible, pero el código no dispone de la foto original dañada ni de una fuente de verdad para comprobarla. |
 | Detecciones RT-DETR y texto BLIP | Son inferencias automáticas con posibles errores; no demuestran que un objeto o detalle haya estado en la fotografía. |
-| Mapa y porcentaje de diferencias | Describen cambios de píxeles. El porcentaje cuenta píxeles cuya diferencia media supera `10/255`; no mide calidad, fidelidad o autenticidad. |
+| Mapa y porcentaje de diferencias | Los tonos oscuros indican poca diferencia y los claros, cambios mayores. El porcentaje cuenta píxeles cuya diferencia absoluta media en RGB supera 10 niveles de 255; no mide calidad, fidelidad o autenticidad. |
 
 En consecuencia, el MVP puede enseñar cómo se procesa una máscara y cómo un
 modelo generativo completa una región, pero no reconstruir con certeza el

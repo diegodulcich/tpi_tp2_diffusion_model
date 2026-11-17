@@ -125,7 +125,7 @@ def ejecutar_pipeline(
     reparada = reparar_imagen(imagen, mascara, prompt, semilla, pasos, fuerza)
     mapa, porcentaje = crear_mapa_diferencias(imagen, reparada)
 
-    # Se analiza una versión por vez para limitar el pico de memoria.
+    # Se analiza una versión por vez; los modelos permanecen en caché.
     detecciones_originales, descripcion_original = analizar_imagen(imagen)
     detecciones_reparadas, descripcion_reparada = analizar_imagen(reparada)
 

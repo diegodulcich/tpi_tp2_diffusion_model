@@ -236,8 +236,8 @@ def procesar(
             "3. Combinó el filtrado solo en la zona marcada y conservó exactamente "
             "los píxeles originales fuera de ella.\n\n"
             f"**Cambio observado:** {porcentaje_cambiado_texto}% de los "
-            "píxeles tuvo una diferencia media de intensidad mayor que 10/255. "
-            "Es una medida de cambio, no de calidad."
+            "píxeles superó 10 niveles (10/255) en la diferencia absoluta media "
+            "de sus canales RGB. Es una medida de cambio, no de calidad."
         )
         descripcion_original = descripcion_reparada = ""
         detecciones_originales = detecciones_reparadas = ""
@@ -263,8 +263,8 @@ def procesar(
             "BLIP (descripción). Se muestran detecciones con puntaje desde 0,50; "
             "estos análisis resumen contenido general y no verifican lo reconstruido.\n\n"
             f"**Cambio observado:** {porcentaje_cambiado_texto}% de los "
-            "píxeles tuvo una diferencia media de intensidad mayor que 10/255. "
-            "Es una medida de cambio, no de calidad ni autenticidad."
+            "píxeles superó 10 niveles (10/255) en la diferencia absoluta media "
+            "de sus canales RGB. Es una medida de cambio, no de calidad ni autenticidad."
         )
         descripcion_original = resultado.descripcion_original or (
             "El modelo no generó una descripción."
@@ -287,9 +287,14 @@ def procesar(
         "plausible, no una recuperación verificada."
     )
     caption_mapa = (
-        "Mapa de diferencias: tonos claros indican más cambio. "
-        f"Cambió notablemente el {resultado.porcentaje_cambiado:.1f}% "
-        "de los píxeles (umbral 10/255)."
+        "**Cómo leer el mapa:** los tonos oscuros (violeta casi negro) indican "
+        "poca o ninguna diferencia; los tonos claros indican cambios mayores.\n\n"
+        "**Umbral 10/255:** se calcula la diferencia absoluta media de los "
+        "canales rojo, verde y azul de cada píxel, en una escala de 0 a 255. "
+        "Un píxel cuenta como cambiado si esa media supera 10 niveles.\n\n"
+        f"**Cambio notable:** {porcentaje_cambiado_texto}% de los píxeles "
+        "superó el umbral. El porcentaje se calcula sobre toda la imagen y "
+        "describe cambios de intensidad; no mide calidad ni autenticidad."
     )
     return (
         resultado,

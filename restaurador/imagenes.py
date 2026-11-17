@@ -96,10 +96,10 @@ def crear_mapa_diferencias(
     """
     antes = np.asarray(original.convert("RGB"), dtype=np.int16)
     despues = np.asarray(resultado.convert("RGB"), dtype=np.int16)
-    diferencia = np.abs(antes - despues).mean(axis=2).astype(np.uint8)
-    porcentaje_cambiado = float(np.mean(diferencia > 10) * 100)
+    diferencia_media = np.abs(antes - despues).mean(axis=2)
+    porcentaje_cambiado = float(np.mean(diferencia_media > 10) * 100)
 
-    escala_grises = Image.fromarray(diferencia)
+    escala_grises = Image.fromarray(diferencia_media.astype(np.uint8))
     mapa = ImageOps.colorize(
         escala_grises,
         black="#160b39",

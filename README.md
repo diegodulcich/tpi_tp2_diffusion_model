@@ -35,7 +35,10 @@ pipeline de inpainting por difusión y análisis visual automático.
 En ambos modos se recompone la imagen con la máscara: los píxeles fuera de la
 región marcada se conservan exactamente. El mapa de diferencias comunica
 cambios entre píxeles, no calidad ni autenticidad. El porcentaje cuenta los
-píxeles cuya diferencia media supera 10/255.
+píxeles cuya diferencia absoluta media en RGB supera 10 niveles, sobre la escala
+de 0 a 255. En el mapa, los tonos oscuros indican poca o ninguna diferencia y
+los tonos claros, diferencias mayores. El porcentaje se calcula sobre todos los
+píxeles de la imagen.
 
 ## Arquitectura
 

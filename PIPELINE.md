@@ -146,11 +146,16 @@ modelo haya alterado píxeles fuera de la zona indicada.
 #### B.2 Diferencias entre original y propuesta
 
 `crear_mapa_diferencias` compara los canales RGB de ambas imágenes, calcula la
-diferencia absoluta media por píxel y cuenta los píxeles cuya diferencia supera
-10/255. También colorea el mapa para visualizar la intensidad del cambio.
+diferencia absoluta media por píxel y cuenta los píxeles cuya media supera 10
+niveles en la escala de 0 a 255. La comparación usa la media sin redondear; solo
+se convierte a entero para dibujar el mapa. Los tonos oscuros (violeta casi
+negro) indican poca o ninguna diferencia; los tonos claros, diferencias
+mayores. El porcentaje se calcula sobre el total de píxeles.
 
-El porcentaje es una medida de cambio visual entre píxeles. No mide la calidad
-de la reparación ni determina si el contenido generado es auténtico.
+El umbral `10/255` significa que la diferencia media por píxel debe superar 10
+niveles de intensidad para contarlo como cambiado. El porcentaje es una medida
+de cambio visual entre píxeles; no mide la calidad de la reparación ni determina
+si el contenido generado es auténtico.
 
 #### B.3 Análisis visual
 
